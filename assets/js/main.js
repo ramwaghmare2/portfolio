@@ -6,6 +6,9 @@ if (menuBtn && mobileMenu) {
   menuBtn.addEventListener("click", () => {
     mobileMenu.classList.toggle("hidden");
   });
+  document.getElementById("close-menu").addEventListener("click", () => {
+    mobileMenu.classList.add("hidden")
+  })
 }
 
 // MATRIX REACTS TO SCROLL (DEPTH EFECT)
@@ -183,3 +186,34 @@ githubActivity();
 function closeMenu() {
   document.getElementById("mobile-menu").classList.add("hidden");
 }
+
+// TYPING COMMAND ANIMATION (NAME)
+const typingText = "RAM WAGHMARE.";
+let index = 0;
+const speed = 100;
+
+function typeName() {
+  const el = document.getElementById("typing-name");
+  if (!el) return;
+
+  if (index < typingText.length) {
+    el.textContent += typingText.charAt(index);
+    index++;
+    setTimeout(typeName, speed);
+  }
+}
+
+window.addEventListener("DOMContentLoaded", typeName);
+
+const nameText = "RAM WAGHMARE.";
+let i = 0;
+
+function typeName() {
+  if (i < nameText.length) {
+    document.getElementById("typing-name").textContent += nameText[i];
+    i++;
+    setTimeout(typeName, 120);
+  }
+}
+typeName();
+
