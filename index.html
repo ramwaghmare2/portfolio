@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ram Waghmare | AWS Cloud Engineer</title>
+
+  <!-- Tailwind CSS -->
+  <link rel="stylesheet" href="dist/output.css" />
+
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Smooth Scroll -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+
+  <style>
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .animate-gradient {
+      background-size: 200% 200%;
+      animation: gradientShift 10s ease infinite;
+    }
+  </style>
+
+  <style>
+  .neon-border {
+    box-shadow: 0 0 25px #3b82f6 inset, 0 0 25px #3b82f6;
+    border: 1px solid #3b82f6 !important;
+    transition: 0.4s;
+  }
+  </style>
+
+  <style>
+  .glitch {
+    position: relative;
+  }
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    opacity: 0.7;
+  }
+  .glitch::before {
+    color: #3b82f6;
+    animation: glitch 2s infinite;
+  }
+  .glitch::after {
+    color: #22d3ee;
+    animation: glitch 1.5s infinite reverse;
+  }
+
+  @keyframes glitch {
+    0% { clip-path: inset(0 0 90% 0); }
+    50% { clip-path: inset(40% 0 40% 0); }
+    100% { clip-path: inset(90% 0 0 0); }
+  }
+</style>
+
+<style>
+.badge {
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  border-radius: 6px;
+  background: rgba(59,130,246,0.1);
+  color: #60a5fa;
+  border: 1px solid rgba(59,130,246,0.4);
+}
+</style>
+
+</head>
+
+<div id="boot-screen" class="fixed inset-0 bg-black text-green-400 font-mono flex items-center justify-center z-[99999]">
+  <pre id="boot-text"></pre>
+</div>
+
+
+<body class="font-[JetBrains_Mono] bg-black text-green-400">
+  <canvas 
+    id="matrixCanvas" 
+    class="fixed top-0 left-0 w-full h-full z-0 pointer-events-none">
+  </canvas>
+
+  <div id="cursor-trail"></div>
+  <!-- NAVBAR -->
+  <div id="terminal" class="bg-black/60 border border-green-500/30 rounded-xl p-4 font-mono text-sm text-green-400">
+    <span id="typed-text"></span><span class="animate-pulse">▮</span>
+  </div>
+
+  <nav class="sticky top-0 z-50 bg-black/80 border-b border-green-500/40 backdrop-blur-sm flex items-center justify-between px-6 py-4">
+
+    <h1 class="text-xl font-bold text-blue-400">
+      RAM WAGHMARE<span class="text-white">.</span>
+    </h1>
+
+  <nav class="hidden md:flex gap-6">
+    <a href="#home" class="hover:text-green-400">Home</a>
+    <a href="about.html" class="hover:text-green-400">About</a>
+    <a href="#skills" class="hover:text-green-400">Skills</a>
+    <a href="#projects" class="hover:text-green-400">Projects</a>
+    <a href="blog.html" class="hover:text-green-400">Blog</a>
+    <a href="case-studies.html" class="hover:text-green-400">Case Studies</a>
+    <a href="contact.html" class="hover:text-green-400">Contact</a>
+  </nav>
+
+<!---- Desktop menu
+    <ul class="hidden md:flex gap-8 font-mono text-gray-300">
+      <a class="block px-4 py-3 text-green-400 border border-green-500/40 rounded-lg mb-3">
+        $ home
+      </a>
+      <a class="block px-4 py-3">$ about</a>
+      <a class="block px-4 py-3">$ skills</a>
+      <a class="block px-4 py-3">$ projects</a>
+      <a class="block px-4 py-3 flex gap-2">📖 $ blog</a>
+      <a class="block px-4 py-3">$ case studies</a>
+      <a class="block px-4 py-3">$ contact</a>
+    </ul>
+-->
+    <!-- Mobile hamburger -->
+    <button id="menu-btn" class="md:hidden text-white text-3xl">
+      ☰
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU 
+  <div id="mobile-menu"
+    class="fixed inset-0 z-50 hidden bg-black/95 font-mono text-gray-300 px-6 py-6">
+    <a href="#skills" class="block hover:text-blue-400">Skills</a>
+    <a class="block px-6 py-4 text-green-400">$ home</a>
+    <a class="block px-6 py-4">$ about</a>
+    <a class="block px-6 py-4">$ skills</a>
+    <a class="block px-6 py-4">$ projects</a>
+    <a class="block px-6 py-4 flex gap-2">📖 $ blog</a>
+    <a class="block px-6 py-4">$ case studies</a>
+    <a class="block px-6 py-4">$ contact</a>
+  </div>
+  -->
+
+  <div id="mobile-menu" class="fixed inset-0 bg-black bg-opacity-95 hidden z-50 p-6">
+    <button id="close-menu" class="text-green-400 text-2xl mb-6">×</button>
+      <ul class="space-y-4 text-green-400 text-lg">
+        <li>$ <a href="#home">home</a></li>
+        <li>$ <a href="#about">about</a></li>
+        <li>$ <a href="#skills">skills</a></li>
+        <li>$ <a href="#projects">projects</a></li>
+        <li>$ <a href="blog.html">blog</a></li>
+        <li>$ <a href="contact.html">contact</a></li>
+      </ul>
+  </div>
+
+  <div class="flex justify-end text-3xl text-gray-400 mb-6">✕</div>
+
+<!-- HERO SECTION -->
+  <section id="home" class="relative z-10 py-20 px-6 md:px-16">
+
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+
+      <!-- LEFT IMAGE -->
+      <div data-aos="fade-right">
+        <img src="assets/images/profile.png" alt="Ram Waghmare" class="rounded-xl shadow-lg border border-gray-700">
+      </div>
+
+      <!-- RIGHT CONTENT -->
+      <div class="space-y-6" data-aos="fade-left">
+
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight glitch"
+            data-text="AWS Cloud Engineer">
+            AWS Cloud Engineer
+        </h1>
+
+        <span class="text-blue-400 glitch" data-text="& Python Developer">
+            & Python Developer
+        </span>
+
+        <p class="text-gray-400 max-w-lg">
+          Building scalable & secure cloud applications with AWS, Docker, Cognito, Kafka, & Flask.
+        </p>
+
+        <!-- TERMINAL BLOCK -->
+        <div class=" bg-opacity-60 shadow-xl  border border-gray-700 rounded-xl p-5 text-sm font-mono">
+          <p class="text-green-400">> Deploying on AWS EC2...</p>
+          <p class="text-blue-400">> Integrating Cognito Auth...</p>
+          <p class="text-yellow-400">> Docker Containers Running...</p>
+        </div>
+
+        <!-- CTA NEON BUTTONS -->
+        <div class="flex flex-wrap gap-4 pt-4">
+
+          <!-- Glow Projects Button -->
+          <a href="#projects"
+            class="flex items-center gap-2 px-6 py-3 font-semibold rounded-lg text-white
+                   shadow-[0_0_15px_#3b82f6]
+                   hover:shadow-[0_0_25px_#60a5fa]
+                   hover:bg-blue-700 transition-all duration-300">
+            <i data-feather="folder"></i> My Projects
+          </a>
+
+          <!-- Glow Resume Button -->
+          <a href="Ram_Waghmare_CV.pdf"
+            class="flex items-center gap-2 px-6 py-3 font-semibold rounded-lg text-blue-400
+                   bg-gray-800 border border-blue-400
+                   hover:shadow-[0_0_20px_#3b82f6]
+                   hover:border-blue-500 transition-all duration-300">
+            <i data-feather="download"></i> Download Resume
+          </a>
+
+          <!-- Glow GitHub Button -->
+          <a href="https://github.com/ramwaghmare2"
+            class="flex items-center gap-2 px-6 py-3 font-semibold rounded-lg text-white
+                    border border-gray-500
+                   hover:border-blue-500 hover:shadow-[0_0_20px_#3b82f6]
+                   transition-all duration-300">
+            <i data-feather="github"></i> GitHub
+          </a>
+
+        </div>
+
+        <!-- CLOUD ICONS -->
+        <div class="flex gap-6 pt-3 opacity-80">
+          <img src="assets/icons/aws.png" class="h-10" alt="AWS">
+          <img src="assets/icons/docker.png" class="h-10" alt="Docker">
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+    <!-- SKILLS SECTION -->
+  <section id="skills" class="relative z-10 bg-transparent py-32 px-6">
+    <h2 class="text-center text-4xl font-extrabold text-white mb-16">
+      SKILLS & EXPERTISE
+    </h2>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+      <!-- Skill Card -->
+      <div class="p-6 rounded-xl bg-black/40 border border-green-500/30">
+
+        <img src="assets/icons/aws.png" class="h-10 mx-auto mb-4 opacity-90" alt="AWS">
+        <h3 class="text-xl font-bold text-blue-400 mb-2">AWS & EC2</h3>
+        <p class="text-gray-400 text-sm">EC2, S3, Cognito, IAM, VPC</p>
+      </div>
+
+      <!-- Docker -->
+      <div class="p-6 rounded-xl bg-black/40 border border-green-500/30">
+        <img src="assets/icons/docker.png" class="h-10 mx-auto mb-4 opacity-90" alt="Docker">
+        <h3 class="text-xl font-bold text-blue-400 mb-2">Docker</h3>
+        <p class="text-gray-400 text-sm">Containers & Compose</p>
+      </div>
+
+      <!-- Python -->
+      <div class="p-6 rounded-xl bg-black/40 border border-green-500/30">
+        <img src="assets/icons/python.png" class="h-10 mx-auto mb-4 opacity-90" alt="Python">
+        <h3 class="text-xl font-bold text-blue-400 mb-2">Python & Flask</h3>
+        <p class="text-gray-400 text-sm">APIs, Auth, Microservices</p>
+      </div>
+
+      <!-- Kafka -->
+      <div class="p-6 rounded-xl bg-black/40 border border-green-500/30">
+        <img src="assets/icons/kafka.png" class="h-10 mx-auto mb-4 opacity-90" alt="Kafka">
+        <h3 class="text-xl font-bold text-blue-400 mb-2">Kafka & Redis</h3>
+        <p class="text-gray-400 text-sm">Messaging & Caching</p>
+      </div>
+
+      <!-- MySQL -->
+      <div class="p-6 rounded-xl bg-black/40 border border-green-500/30">
+        <img src="assets/icons/mysql.png" class="h-10 mx-auto mb-4 opacity-90" alt="MySQL">
+        <h3 class="text-xl font-bold text-blue-400 mb-2">MySQL</h3>
+        <p class="text-gray-400 text-sm">DB Design & Optimization</p>
+      </div>
+
+      <!-- Linux -->
+      <div class="p-6 rounded-xl bg-black/40 border border-green-500/30">
+        <img src="assets/icons/linux.png" class="h-10 mx-auto mb-4 opacity-90" alt="Linux">
+        <h3 class="text-xl font-bold text-blue-400 mb-2">Linux & Networking</h3>
+        <p class="text-gray-400 text-sm">SSH, CIDR, DNS, Routing</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION -->
+  <section id="projects" class="relative z-10 bg-transparent py-32 px-6">
+
+    <h2 class="text-center text-4xl font-extrabold text-white mb-16">
+      Featured Projects
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-12 max-w-7xl mx-auto">
+
+      <!-- Project 1 -->
+      <div class="group p-6 rounded-xl  bg-opacity-50  border border-gray-700 distort"
+           data-aos="fade-right">
+
+        <h3 class="text-2xl font-bold text-blue-400 mb-4">E-Commerce Platform</h3>
+
+        <p class="text-gray-400 mb-6">
+          Scalable backend with Cognito auth, EC2 deployment, Docker containers & MySQL database.
+        </p>
+<!--
+        <div class="flex flex-wrap gap-2">
+          <span class="badge">AWS</span>
+          <span class="badge">EC2</span>
+          <span class="badge">Docker</span>
+          <span class="badge">Cognito</span>
+          <span class="badge">MySQL</span>
+        </div>
+-->
+        <div class="flex gap-6 items-center text-blue-400 font-mono text-sm animate-pulse">
+          <span>👤 User</span>
+          <span>→</span>
+          <span>🌐 ALB</span>
+          <span>→</span>
+          <span>🖥 EC2</span>
+          <span>→</span>
+          <span>🐳 Docker</span>
+          <span>→</span>
+          <span>🗄 RDS</span>
+        </div>
+
+        <a href="#" class="mt-6 inline-block text-blue-400 group-hover:text-blue-300 transition">
+          View Details →
+        </a>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="group p-6 rounded-xl  bg-opacity-50  border border-gray-700
+                  hover:border-blue-400 hover:shadow-[0_0_35px_#3b82f6] transition-all duration-300"
+           data-aos="fade-left">
+
+        <h3 class="text-2xl font-bold text-blue-400 mb-4">Real-Time Food Delivery System</h3>
+
+        <p class="text-gray-400 mb-6">
+          Kafka-driven real-time tracking with Redis caching, microservices & bulk DB inserts.
+        </p>
+
+        <div class="flex flex-wrap gap-2">
+          <span class="badge">Kafka</span>
+          <span class="badge">Redis</span>
+          <span class="badge">Docker</span>
+          <span class="badge">MySQL</span>
+          <span class="badge">Microservices</span>
+        </div>
+
+        <a href="#" class="mt-6 inline-block text-blue-400 group-hover:text-blue-300 transition">
+          View Details →
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer data-aos="fade-up" class="relative z-10 bg-transparent mt-32 px-6">
+
+    <h3 class="text-2xl font-bold text-white mb-6">Connect With Me</h3>
+
+    <div class="bg-black/70 border border-green-500/30 rounded-xl p-4 font-mono text-green-400 text-sm max-w-xl">
+      <p class="text-green-500">$ github activity</p>
+      <pre id="github-terminal"></pre>
+    </div>
+
+    <!--<div class="flex justify-center gap-6 mb-6 flex-wrap">-->
+
+      <a href="https://github.com/ramwaghmare2" class="flex items-center gap-2">
+        <i data-feather="github"></i> GitHub
+      </a>
+
+      <a href="https://linkedin.com/in/ramwaghmare287" class="flex items-center gap-2">
+        <i data-feather="linkedin"></i> LinkedIn
+      </a>
+
+      <a href="mailto:ramwaghmare288@gmail.com" class="flex items-center gap-2">
+        <i data-feather="mail"></i> Email
+      </a>
+
+      <a href="tel:+919503247090" class="flex items-center gap-2">
+        <i data-feather="phone"></i> Phone
+      </a>
+
+    </div>
+
+    <p class="text-gray-500 text-sm mt-6">© 2025 Ram Waghmare. All Rights Reserved.</p>
+
+  </footer>
+
+
+  <!-- SCRIPTS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script>
+    AOS.init();
+    feather.replace();
+  </script>
+
+  <script src="assets/js/main.js"></script>
+
+<span id="click-ripple"></span>
+</body>
+</html>
