@@ -99,82 +99,54 @@
 
   <div id="cursor-trail"></div>
   <!-- NAVBAR -->
-    <nav class="fixed top-0 left-0 w-full z-50
-            bg-black/80 backdrop-blur-sm
-            border-b border-green-500/40
-            flex items-center justify-between
-            px-6 h-14 font-mono">
+  <nav class="fixed top-0 left-0 w-full h-14 px-6 flex items-center justify-between bg-black/80 backdrop-blur z-50">
 
-      <h1 class="text-xl font-bold text-blue-400">
-        <span id="typing-name" class="text-blue-400 text-lg"></span>
-      </h1>
+      <div class="flex items-center gap-3">
+        <img
+          src="assets/images/profile.png"
+          alt="ram waghmare"
+          class="w-8 h-8 rounded-full border border-green-400"
+        />
+
+        <span class="text-green-400 font-mono text-lg lowercase tracking-wide">
+          ram waghmare
+        </span>
+      </div>
 
     <!--Desktop menu-->
-    <nav class="hidden md:flex gap-6 text-gray-400 text-sm">
-      <a href="#home" class="hover:text-green-300">$ Home</a>
-      <a href="about.html" class="hover:text-green-300">$ About</a>
-      <a href="#skills" class="hover:text-green-300">$ Skills</a>
-      <a href="#projects" class="hover:text-green-300">$ Projects</a>
-      <a href="blog.html" class="hover:text-green-300">$ Blog</a>
-      <a href="case-studies.html" class="hover:text-green-300">$ Case Studies</a>
-      <a href="contact.html" class="hover:text-green-300">$ Contact</a>
-    </nav>
-
-<!---- Desktop menu
-    <ul class="hidden md:flex gap-8 font-mono text-gray-300">
-      <a class="block px-4 py-3 text-green-400 border border-green-500/40 rounded-lg mb-3">
-        $ home
-      </a>
-      <a class="block px-4 py-3">$ about</a>
-      <a class="block px-4 py-3">$ skills</a>
-      <a class="block px-4 py-3">$ projects</a>
-      <a class="block px-4 py-3 flex gap-2">📖 $ blog</a>
-      <a class="block px-4 py-3">$ case studies</a>
-      <a class="block px-4 py-3">$ contact</a>
+    <ul class="hidden md:flex gap-6 font-mono text-gray-400 text-sm">
+      <li><a href="#home" class="hover:text-green-300">$ Home</a></li>
+      <li><a href="about.html" class="hover:text-green-300">$ About</a></li>
+      <li><a href="#skills" class="hover:text-green-300">$ Skills</a></li>
+      <li><a href="#projects" class="hover:text-green-300">$ Projects</a></li>
+      <li><a href="blog.html" class="hover:text-green-300">$ Blog</a></li>
+      <li><a href="case-studies.html" class="hover:text-green-300">$ Case Studies</a>
+      <li><a href="contact.html" class="hover:text-green-300">$ Contact</a></li>
     </ul>
--->
     <!-- Mobile hamburger -->
     <button id="menu-btn" class="md:hidden text-white text-3xl">
       ☰
     </button>
   </nav>
 
-  <!-- MOBILE MENU 
-  <div id="mobile-menu"
-    class="fixed inset-0 z-50 hidden bg-black/95 font-mono text-gray-300 px-6 py-6">
-    <a href="#skills" class="block hover:text-blue-400">Skills</a>
-    <a class="block px-6 py-4 text-green-400">$ home</a>
-    <a class="block px-6 py-4">$ about</a>
-    <a class="block px-6 py-4">$ skills</a>
-    <a class="block px-6 py-4">$ projects</a>
-    <a class="block px-6 py-4 flex gap-2">📖 $ blog</a>
-    <a class="block px-6 py-4">$ case studies</a>
-    <a class="block px-6 py-4">$ contact</a>
-  </div>
-  -->
-
+  <!-- MOBILE MENU-->
   <div id="mobile-menu" class="fixed inset-0 bg-black bg-opacity-95 hidden z-50 p-6">
     <button id="close-menu" class="text-green-400 text-2xl mb-6">×</button>
-      <ul class="space-y-4 text-green-400 text-lg">
-        <li>$ <a href="#home">home</a></li>
-        <li>$ <a href="#about">about</a></li>
-        <li>$ <a href="#skills">skills</a></li>
-        <li>$ <a href="#projects">projects</a></li>
-        <li>$ <a href="blog.html">blog</a></li>
-        <li>$ <a href="contact.html">contact</a></li>
-      </ul>
+      <div class="md:hidden text-green-400 font-mono">
+        <a href="#home" class="block px-6 py-3">$ home</a>
+        <a href="#about" class="block px-6 py-3">$ about</a>
+        <a href="#skills" class="block px-6 py-3">$ skills</a>
+        <a href="#projects" class="block px-6 py-3">$ projects</a>
+        <a href="#blog" class="block px-6 py-3">$ blog</a>
+        <a href="#case-studies" class="block px-6 py-3">$ case studies</a>
+        <a href="#contact" class="block px-6 py-3">$ contact</a>
+      </div>
   </div>
 
 <!-- HERO SECTION -->
   <section id="home" class="bg-transparent relative z-10 pt-20">
 
     <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-
-      <!-- LEFT IMAGE -->
-      <div data-aos="fade-right">
-        <img src="assets/images/profile.png" alt="Ram Waghmare" class="rounded-xl shadow-lg border border-gray-700">
-      </div>
-
       <!-- RIGHT CONTENT -->
       <div class="space-y-6" data-aos="fade-left">
 
