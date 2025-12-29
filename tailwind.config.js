@@ -4,4 +4,9 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+
+  fontFamily: {
+    mono: ['"JetBrains Mono"', 'monospace']
+  }
 }
+

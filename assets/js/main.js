@@ -6,9 +6,12 @@ if (menuBtn && mobileMenu) {
   menuBtn.addEventListener("click", () => {
     mobileMenu.classList.toggle("hidden");
   });
-  document.getElementById("close-menu").addEventListener("click", () => {
-    mobileMenu.classList.add("hidden")
-  })
+  const closeBtn = document.getElementById("close-menu");
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      mobileMenu.classList.add("hidden");
+    });
+  }
 }
 
 // MATRIX REACTS TO SCROLL (DEPTH EFECT)
@@ -38,7 +41,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let drops = Array(columns).fill(1);
 
   function draw() {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+    ctx.fillStyle = "rgba(0, 0, 0, 0.15)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     ctx.fillStyle = "#00ff66";
@@ -51,7 +54,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (y * fontSize > canvas.height && Math.random() > 0.97) {
         drops[i] = 0;
       }
-      drops[i]++;
+      drops[i] += scrollSpeed;
     });
   }
 

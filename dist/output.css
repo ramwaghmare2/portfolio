@@ -1186,3 +1186,21 @@ video {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+
+.hero-avatar {
+  margin-top: 56px;
+  z-index: 10;
+}
+
+section#home {
+  overflow: hidden;
+}
+
+#matrixCanvas {
+  z-index: 0;
+}
+
+main, nav {
+  position: relative;
+  z-index: 10;
+}
